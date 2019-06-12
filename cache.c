@@ -58,9 +58,9 @@ static u32 timestamp(void)
 {
 	u32 val;
 
-    val = XScuTimer_GetCounterReg(config->BaseAddr) / ONE_MICROSECOND;
+	val = XScuTimer_GetCounterReg(config->BaseAddr) / ONE_MICROSECOND;
 
-    return val;
+	return val;
 }
 
 static void init_timer(void)
@@ -74,14 +74,14 @@ static void init_timer(void)
 
 static u32 ** linear(u32 **buffer, u32 stride, u32 max)
 {
-    u32 i, last = 1;
+	u32 i, last = 1;
 
 	for (i = stride + 1; i <= max; i += stride) {
 		buffer[last] = (u32 *)&buffer[i];
 		last = i;
 	}
 	buffer[max] = 0;
-    return &buffer[1];
+	return &buffer[1];
 }
 
 static char *print_size(int size)
@@ -189,7 +189,7 @@ void cache_result(void)
 		}
 
 		printf("\tL%d Cache is %s, %d-way (cacheline is %dB, latency %3.1lf nsec)\n",
-					cache_level, print_size(cache_size[cache_level]), p_way, cache_line, cache_latency[cache_level]);
+			cache_level, print_size(cache_size[cache_level]), p_way, cache_line, cache_latency[cache_level]);
 		cache_level++;
 	}
 	printf("======================================================================\n");
@@ -198,16 +198,16 @@ void cache_result(void)
 
 void cache_latency_bench(u32 cache_max)
 {
-    volatile u32 i, stride;
-    u32 steps, csize, limit;
-    u32	sec0, sec;
-    u32 **start;
-    register u32 **p;
+	volatile u32 i, stride;
+	u32 steps, csize, limit;
+	u32 sec0, sec;
+	u32 **start;
+	register u32 **p;
 
-    for (csize=CACHE_MIN; csize <= cache_max/4; csize*=2) {
+	for (csize=CACHE_MIN; csize <= cache_max/4; csize*=2) {
 		for (stride=1; stride <= csize/2; stride=stride*2) {
 			Xil_DCacheFlush();
-	        init_timer();
+			init_timer();
 
 			sec = 0.0;
 			limit = csize - stride + 1;
@@ -234,7 +234,7 @@ void cache_latency_bench(u32 cache_max)
 		}
 		printf("\n");
 	}
-    return;
+	return;
 }
 
 void init_global_variable(void)
@@ -282,6 +282,7 @@ Start:
 			cache_result();
 			printf("\n-- Test Finished -- \n");
 			break;
+			
 		case 2: /* L1 Cache On/OFF */
 			if (status_l1) {
 				Xil_L1DCacheDisable();
@@ -291,6 +292,7 @@ Start:
 			printf("\nL1 Cache %s\n", status_l1? ("on->off"):("off->on"));
 			status_l1 ^= 1;
 			goto Start;
+			
 		case 3: /* L2 Cache On/Off */
 			if (status_l2) {
 				Xil_L2CacheDisable();
@@ -300,6 +302,7 @@ Start:
 			printf("\nL2 Cache %s\n", status_l2? ("on->off"):("off->on"));
 			status_l2 ^= 1;
 			goto Start;
+			
 		case 4: /* Fast mode test */
 			printf("\n-- Test Started [fastmode] -- \n\t(L1 %s, L2 %s)\n", status_l1? "ON": "OFF", status_l2? "ON" : "OFF");
 			e_time = 100000;
@@ -307,14 +310,14 @@ Start:
 			cache_result();
 			printf("\n-- Test Finished -- \n");
 			break;
+			
 		case 5:
 			printf("\n-- Byebye -- \n");
 			return 0;
+			
 		default:
 			goto Start;
 	}
-    goto Start;
-
-    return 0;
+	goto Start;
+	return 0;
 }
-
