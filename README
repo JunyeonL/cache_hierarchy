@@ -1,1 +1,23 @@
+Cache Architecture Analysis Tool
+================================
 
+This is a tool for analyzing the detailed structure of the cache even if
+you do not know the cache architecture. The basic idea of this source code
+is to analyze Cache Hierarchy, Cache size, Associativity and Cacheline size
+according to memory access latency.
+
+Some part of the source code comes from https://github.com/ob/cache.
+
+Test Enviromnent
+ - Board : ZedBoard(Zynq7000)
+ - OS : Bare-metal
+ - SDK : Vivado 2018.3, Xilinx SDK 2018.3
+
+Generate Application in SDK (Xilinx SDK)
+  1. Make new application (File > New > Application Project)
+  2. Select the Empty Application templete and click Finish.
+  3. Import cache.c file
+ 
+Run Analysis Tool
+  - When you run the application, the following menu selection log appears.
+  
