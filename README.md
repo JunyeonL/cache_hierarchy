@@ -22,7 +22,7 @@ Some part of the source code comes from https://github.com/ob/cache.
     - After compilation, run this application, the following menu appears.
   	 
     ---------------------------------
-	        1: run
+         1: run
          2: L1 Data cache (on)
          3: L2 Data Cache (on)
          4: fastmode
