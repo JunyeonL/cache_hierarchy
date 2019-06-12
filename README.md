@@ -13,6 +13,7 @@ Some part of the source code comes from https://github.com/ob/cache.
    - Board : ZedBoard(Zynq7000)
    - OS : Bare-metal
    - SDK : Vivado 2018.3, Xilinx SDK 2018.3
+   - Hardware Bitstream : X
 
 
 * Generate Application in SDK (Xilinx SDK)
