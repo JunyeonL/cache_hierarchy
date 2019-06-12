@@ -8,15 +8,18 @@ according to memory access latency.
 
 Some part of the source code comes from https://github.com/ob/cache.
 
+
 * Test Enviromnent
    - Board : ZedBoard(Zynq7000)
    - OS : Bare-metal
    - SDK : Vivado 2018.3, Xilinx SDK 2018.3
 
+
 * Generate Application in SDK (Xilinx SDK)
     1. Make new application (File > New > Application Project)
     2. Select the Empty Application templete and click Finish.
     3. Import cache.c file
+ 
  
 * How to run this tool
     - After compilation, run this application, the following menu appears.
@@ -31,6 +34,7 @@ Some part of the source code comes from https://github.com/ob/cache.
 
     - Select 1 or 4 to run the test (Normal or Fast mode).
     - If you want to run tests without L1 or L2 cache, select 2 or 3
+
 
 * Test Result
     - After the application has measured all cache access latencies,
